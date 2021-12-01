@@ -16,7 +16,8 @@ fi
 get_windows_ids() {
     xprop -root |
         grep '^_NET_CLIENT_LIST' |
-        sed 's/^.\+# //; s/, \+/\n/g'
+        sed 's/^.\+# //; s/, \+/\n/g' |
+        sort | uniq
 }
 
 get_window_name() {
