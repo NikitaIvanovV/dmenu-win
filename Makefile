@@ -1,4 +1,4 @@
-SCRIPT = dmenu-dwm
+SCRIPT = dmenu-win
 
 ifeq ($(PREFIX),)
     PREFIX := /usr/local
