@@ -1,8 +1,6 @@
-SCRIPT = dmenu-win
+PREFIX ?= /usr/local
 
-ifeq ($(PREFIX),)
-    PREFIX := /usr/local
-endif
+SCRIPT = dmenu-win
 
 all:
 
