@@ -52,9 +52,7 @@ focus_window() {
     xdotool windowactivate "$1"
 }
 
-windows="$(get_windows)"
-
-selection="$(echo "$windows" | get_windows_menu | $DMENU)"
+selection="$(get_windows | get_windows_menu | $DMENU)"
 [ -z "$selection" ] && exit 0
 
 focus_window "$(echo "$windows" | get_selected_window "$selection" | get_window_id)"
