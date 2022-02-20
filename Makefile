@@ -1,11 +1,13 @@
-PREFIX ?= /usr/local
+PREFIX    ?= /usr/local
+BINPREFIX := $(DESTDIR)$(PREFIX)/bin
 
 SCRIPT = dmenu-win
 
 all:
 
 install:
-	install ${SCRIPT} $(PREFIX)/bin
+	install -d ${BINPREFIX}
+	install ${SCRIPT} ${BINPREFIX}
 
 uninstall:
 	rm -f $(PREFIX)/bin/${SCRIPT}
