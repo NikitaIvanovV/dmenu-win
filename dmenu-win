@@ -13,9 +13,6 @@ check_dep dmenu   https://tools.suckless.org/dmenu
 check_dep xdotool https://github.com/jordansissel/xdotool
 check_dep xprop   https://gitlab.freedesktop.org/xorg/app/xprop
 
-# dmenu command
-[ -z "$DMENU" ] && DMENU='dmenu -i -l 10 -p Windows'
-
 get_windows_ids() {
     xprop -root _NET_CLIENT_LIST |
         sed 's/^.\+# //; s/, \+/\n/g' | sort | uniq
@@ -52,7 +49,10 @@ focus_window() {
     xdotool windowactivate "$1"
 }
 
-selection="$(get_windows | get_windows_menu | $DMENU)"
+dmenu_opts="$@"
+[ -z "$dmenu_opts" ] && dmenu_opts='-i -l 10 -p Windows'
+
+selection="$(get_windows | get_windows_menu | dmenu $dmenu_opts)"
 [ -z "$selection" ] && exit 0
 
 focus_window "$(echo "$windows" | get_selected_window "$selection" | get_window_id)"

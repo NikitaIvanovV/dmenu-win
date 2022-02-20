@@ -43,8 +43,8 @@ Just run:
 dmenu-win
 ```
 
-dmenu is called with these options: `dmenu -i -l 10 -p Windows`. If you want to set your options, use DMENU variable:
+dmenu is called with these options by default: `-i -l 10 -p Windows`. You can set your options by passing them as arguments to the script:
 
 ```sh
-DMENU='dmenu -l 5 -p Type...' dmenu-win
+dmenu-win -l 5 -p Type...
 ```
