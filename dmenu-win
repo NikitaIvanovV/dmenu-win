@@ -14,10 +14,8 @@ fi
 [ -z "$DMENU" ] && DMENU='dmenu -i -l 10 -p Windows'
 
 get_windows_ids() {
-    xprop -root |
-        grep '^_NET_CLIENT_LIST' |
-        sed 's/^.\+# //; s/, \+/\n/g' |
-        sort | uniq
+    xprop -root _NET_CLIENT_LIST |
+        sed 's/^.\+# //; s/, \+/\n/g' | sort | uniq
 }
 
 get_window_name() {
