@@ -7,10 +7,12 @@ This small shell script allows you to quickly switch between windows with [dmenu
 
 ## Dependencies
 * [dmenu](https://tools.suckless.org/dmenu/)
+* [xprop](https://gitlab.freedesktop.org/xorg/app/xprop/)
 * [xdotool](https://github.com/jordansissel/xdotool/)
-* ([focusonnetactive patch](https://dwm.suckless.org/patches/focusonnetactive/) if you use [dwm](https://dwm.suckless.org/))
+* ([focusonnetactive patch](https://dwm.suckless.org/patches/focusonnetactive/), if you use [dwm](https://dwm.suckless.org/))
 
 ## Installation
+
 ```sh
 git clone https://github.com/NikitaIvanovV/dmenu-win
 cd dmenu-win
@@ -21,12 +23,14 @@ Uninstall with `sudo make uninstall`
 
 ## Usage
 
-Just run: 
+Just run:
+
 ```sh
 dmenu-win
 ```
 
 dmenu is called with these options: `dmenu -i -l 10 -p Windows`. If you want to set your options, use DMENU variable:
+
 ```sh
 DMENU='dmenu -l 5 -p Type...' dmenu-win
 ```

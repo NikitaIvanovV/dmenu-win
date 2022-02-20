@@ -1,14 +1,17 @@
 #!/bin/sh
 
-if ! command -v dmenu > /dev/null; then
-    echo "ERROR: dmenu is required: https://tools.suckless.org/dmenu" >&2
+err() {
+    echo "$0: $1" >&2
     exit 1
-fi
+}
 
-if ! command -v xdotool > /dev/null; then
-    echo "ERROR: xdotool is required: https://github.com/jordansissel/xdotool" >&2
-    exit 1
-fi
+check_dep() {
+    command -v "$1" > /dev/null || err "$1 is required: $2"
+}
+
+check_dep dmenu   https://tools.suckless.org/dmenu
+check_dep xdotool https://github.com/jordansissel/xdotool
+check_dep xprop   https://gitlab.freedesktop.org/xorg/app/xprop
 
 # dmenu command
 [ -z "$DMENU" ] && DMENU='dmenu -i -l 10 -p Windows'
