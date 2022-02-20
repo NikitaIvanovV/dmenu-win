@@ -1,5 +1,8 @@
 # dmenu-win
+
 Switch between windows with dmenu
+
+![showcase](screenshot.png)
 
 ----
 
