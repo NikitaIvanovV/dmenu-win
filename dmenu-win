@@ -18,12 +18,12 @@ check_dep xdotool https://github.com/jordansissel/xdotool
 check_dep xprop   https://gitlab.freedesktop.org/xorg/app/xprop
 
 get_windows_ids() {
-    list="$(xprop -root _NET_CLIENT_LIST)" || err "Failed to get windows list"
+    list="$(xprop -root _NET_CLIENT_LIST 2> /dev/null)" || err "Failed to get windows list"
     echo "$list" | sed 's/^.\+# //; s/, \+/\n/g' | sort | uniq
 }
 
 get_window_name() {
-    wm_name="$(xprop -id "$1" WM_NAME)" || return 1
+    wm_name="$(xprop -id "$1" WM_NAME 2> /dev/null)" || return 1
     echo "$wm_name" | sed 's/^.\+ = //; s/^"//; s/"$//'
 }
 
