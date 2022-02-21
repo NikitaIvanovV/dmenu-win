@@ -1,7 +1,11 @@
 #!/bin/sh
 
-err() {
+echo_err() {
     echo "$0: $1" >&2
+}
+
+err() {
+    echo_err "$1"
     exit 1
 }
 
@@ -14,17 +18,22 @@ check_dep xdotool https://github.com/jordansissel/xdotool
 check_dep xprop   https://gitlab.freedesktop.org/xorg/app/xprop
 
 get_windows_ids() {
-    xprop -root _NET_CLIENT_LIST |
-        sed 's/^.\+# //; s/, \+/\n/g' | sort | uniq
+    list="$(xprop -root _NET_CLIENT_LIST)" || err "Failed to get windows list"
+    echo "$list" | sed 's/^.\+# //; s/, \+/\n/g' | sort | uniq
 }
 
 get_window_name() {
-    xprop -id "$1" WM_NAME | sed 's/^.\+ = //; s/^"//; s/"$//'
+    wm_name="$(xprop -id "$1" WM_NAME)" || return 1
+    echo "$wm_name" | sed 's/^.\+ = //; s/^"//; s/"$//'
 }
 
 # Get windows in format "$num $id $name"
 get_windows() {
     get_windows_ids | while read -r id; do
+        if ! name="$(get_window_name "$id")"; then
+            echo_err "Failed to get window name of $id"
+            continue
+        fi
         echo "$id $(get_window_name "$id")"
     done | nl -w 1 -s ' '
 }
