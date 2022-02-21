@@ -52,7 +52,9 @@ focus_window() {
 dmenu_opts="$@"
 [ -z "$dmenu_opts" ] && dmenu_opts='-i -l 10 -p Windows'
 
-selection="$(get_windows | get_windows_menu | dmenu $dmenu_opts)"
+windows="$(get_windows)"
+
+selection="$(echo "$windows" | get_windows_menu | dmenu $dmenu_opts)"
 [ -z "$selection" ] && exit 0
 
 focus_window "$(echo "$windows" | get_selected_window "$selection" | get_window_id)"
