@@ -34,7 +34,7 @@ get_windows() {
             echo_err "Failed to get window name of $id"
             continue
         fi
-        echo "$id $(get_window_name "$id")"
+        echo "$id $name"
     done | nl -w 1 -s ' '
 }
 
