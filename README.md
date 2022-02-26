@@ -13,7 +13,7 @@ This small shell script allows you to quickly switch between windows with [dmenu
 * [dmenu](https://tools.suckless.org/dmenu/)
 * [xprop](https://gitlab.freedesktop.org/xorg/app/xprop/)
 * [xdotool](https://github.com/jordansissel/xdotool/)
-* ([focusonnetactive patch](https://dwm.suckless.org/patches/focusonnetactive/), if you use [dwm](https://dwm.suckless.org/))
+* ([focusonnetactive patch](https://dwm.suckless.org/patches/focusonnetactive/) if you use [dwm](https://dwm.suckless.org/))
 
 ## Installation
 
