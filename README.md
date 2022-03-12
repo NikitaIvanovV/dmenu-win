@@ -1,12 +1,8 @@
 # dmenu-win
 
-Switch between windows with dmenu
+This small shell script allows you to switch between windows with [dmenu](https://tools.suckless.org/dmenu/).
 
 ![showcase](screenshot.png)
-
-----
-
-This small shell script allows you to quickly switch between windows with [dmenu](https://tools.suckless.org/dmenu/).
 
 ## Dependencies
 
